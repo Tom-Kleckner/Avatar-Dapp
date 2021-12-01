@@ -44,7 +44,7 @@ function App() {
   };
 
   const [account, setAccount] = useState();
-  let [img, setImg] = useState(localStorage["fileBase64"] || logo);
+  let [img, setImg] = useState(localStorage["fileBase64"]);
   let [coverIndex, setCoverIndex] = useState(localStorage["coverIndex"]);
   let [balance, setBalance] = useState();
   // let provider = Web3.givenProvider ? Web3.givenProvider : config.chainURL;
@@ -107,15 +107,20 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Overlay
-          className="App-logo"
-          url={img} // required
-          overlayUrl={covers[coverIndex].img} // required
-          position={"center"}
-          overlayWidth={250}
-          overlayHeight={250}
-          watermark={false}
-        />
+        {console.log(typeof img !== "undefined")}
+        {typeof img !== "undefined" ? (
+          <Overlay
+            className="App-logo"
+            url={img} // required
+            overlayUrl={covers[coverIndex].img} // required
+            position={"center"}
+            overlayWidth={250}
+            overlayHeight={250}
+            watermark={false}
+          />
+        ) : (
+          <img src={logo} className="app-logo" />
+        )}
         <input
           type="file"
           id="imageFile"
@@ -130,7 +135,7 @@ function App() {
             <img
               className={getCoverClass(index)}
               src={item.img}
-              alt={img.alt}
+              alt={item.alt}
               disabled="true"
               onClick={(e) => {
                 setCoverIndex(index);
