@@ -98,7 +98,7 @@ function App() {
     if (index === coverIndex) {
       return "Selected-img";
     }
-    if (balance > covers[index].min) {
+    if (balance >= covers[index].min) {
       return "Cover-img";
     }
     return "Cover-locked";
