@@ -107,19 +107,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {console.log(typeof img !== "undefined")}
         {typeof img !== "undefined" ? (
           <Overlay
-            className="App-logo"
             url={img} // required
-            overlayUrl={covers[coverIndex].img} // required
-            position={"center"}
-            overlayWidth={250}
-            overlayHeight={250}
+            overlayUrl={covers[coverIndex] ? covers[coverIndex].img : logo} // required
+            position={covers[coverIndex] ? "center" : "bottomRight"}
+            overlayWidth={covers[coverIndex] ? 250 : 10}
+            overlayHeight={covers[coverIndex] ? 250 : 10}
             watermark={false}
           />
         ) : (
-          <img src={logo} className="app-logo" />
+          <img src={logo} className="App-logo" />
         )}
         <input
           type="file"
