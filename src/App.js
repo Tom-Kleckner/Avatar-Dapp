@@ -119,7 +119,7 @@ function App() {
         ) : (
           <img src={logo} className="App-logo" />
         )}
-        <label class="custom-file-upload">
+        <label className="custom-file-upload">
           <input
             type="file"
             id="imageFile"
