@@ -119,23 +119,25 @@ function App() {
         ) : (
           <img src={logo} className="App-logo" />
         )}
-        <input
-          type="file"
-          id="imageFile"
-          name="imageFile"
-          accept=".gif,.jpg,.jpeg,.png"
-          onChange={imageUpload}
-        />
+        <label class="custom-file-upload">
+          <input
+            type="file"
+            id="imageFile"
+            name="imageFile"
+            accept=".gif,.jpg,.jpeg,.png"
+            onChange={imageUpload}
+          />
+          Upload Avatar
+        </label>
         <label>{"Orbit Balance: " + balance}</label>
       </header>
       <div className="Covers-container">
         {covers.map((item, index) => (
-          <div className="Covers" id={index}>
+          <div className="Covers" key={index}>
             <img
               className={getCoverClass(index)}
               src={item.img}
               alt={item.alt}
-              disabled="true"
               onClick={(e) => {
                 setCoverIndex(index);
                 localStorage["coverIndex"] = index;
