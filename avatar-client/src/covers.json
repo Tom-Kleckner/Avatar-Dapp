@@ -1,0 +1,44 @@
+[
+  {
+    "img": "./soldier.png",
+    "cost": "1-99,999",
+    "alt": "Soldier",
+    "min": 1
+  },
+  {
+    "img": "./guardian.png",
+    "cost": "100k-149,999",
+    "alt": "Guardian",
+    "min": 100000
+  },
+  {
+    "img": "./captain.png",
+    "cost": "200k-299,999",
+    "alt": "Captain",
+    "min": 200000
+  },
+  {
+    "img": "./legend.png",
+    "cost": "300k-499,999",
+    "alt": "Legend",
+    "min": 300000
+  },
+  {
+    "img": "./admiral.png",
+    "cost": "500k-999,999",
+    "alt": "Admiral",
+    "min": 500000
+  },
+  {
+    "img": "./oracle.png",
+    "cost": "1m-2,999,999",
+    "alt": "Oracle",
+    "min": 1000000
+  },
+  {
+    "img": "./commander.png",
+    "cost": ">3M",
+    "alt": "Commander",
+    "min": 3000000
+  }
+]
