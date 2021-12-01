@@ -126,6 +126,7 @@ function App() {
           accept=".gif,.jpg,.jpeg,.png"
           onChange={imageUpload}
         />
+        <label>{"Orbit Balance: " + balance}</label>
       </header>
       <div className="Covers-container">
         {covers.map((item, index) => (
