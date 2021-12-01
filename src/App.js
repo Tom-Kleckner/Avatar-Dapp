@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import logo from "./OrbitLaunchLogo.jpg";
 import "./App.css";
 import { useState, useEffect } from "react";
 import qbitABI from "./qbitABI.json";
