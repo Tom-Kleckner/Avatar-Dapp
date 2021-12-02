@@ -1,7 +1,7 @@
 import logo from "./OrbitLaunchLogo.jpg";
 import "./App.css";
 import { useState, useEffect } from "react";
-import qbitABI from "./qbitABI.json";
+import orbitABI from "./orbitABI.json";
 import Contract from "web3-eth-contract";
 import Web3 from "web3";
 import covers from "./covers.json";
@@ -50,9 +50,9 @@ function App() {
   let provider = Web3.givenProvider;
   Contract.setProvider(provider);
 
-  let qbitContract = new Contract(
-    qbitABI,
-    "0xa38898a4ae982cb0131104a6746f77fa0da57aaa"
+  let orbitContract = new Contract(
+    orbitABI,
+    "0x20bf68C512D5c8125687069347878ce0e7f01748"
   );
 
   const connectWeb3 = async () => {
@@ -64,11 +64,11 @@ function App() {
   };
   const updateBalance = () => {
     if (account) {
-      qbitContract.methods
+      orbitContract.methods
         .balanceOf(account)
         .call({ from: account })
         .then((e) => {
-          setBalance(e);
+          setBalance(Web3.utils.fromWei(e));
         });
     }
   };
@@ -81,7 +81,7 @@ function App() {
         setAccount(accounts[0]);
         updateBalance();
       });
-      qbitContract.events.Transfer({ from: "latest" }, () => {
+      orbitContract.events.Transfer({ from: "latest" }, () => {
         updateBalance();
       });
     }
