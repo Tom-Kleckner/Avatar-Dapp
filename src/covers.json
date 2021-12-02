@@ -1,44 +1,44 @@
 [
   {
-    "img": "./soldier.png",
-    "cost": "1-99,999",
-    "alt": "Soldier",
+    "img": "./guardian.png",
+    "cost": "1-4,999",
+    "alt": "Guardian",
     "min": 1
   },
   {
-    "img": "./guardian.png",
-    "cost": "100k-149,999",
-    "alt": "Guardian",
-    "min": 100000
+    "img": "./spy.png",
+    "cost": "5k-9,999",
+    "alt": "Spy",
+    "min": 5000
   },
   {
     "img": "./captain.png",
-    "cost": "200k-299,999",
+    "cost": "10k-24,999",
     "alt": "Captain",
-    "min": 200000
+    "min": 10000
   },
   {
     "img": "./legend.png",
-    "cost": "300k-499,999",
+    "cost": "25k-49,999",
     "alt": "Legend",
-    "min": 300000
+    "min": 25000
   },
   {
     "img": "./admiral.png",
-    "cost": "500k-999,999",
+    "cost": "50k-249,999",
     "alt": "Admiral",
-    "min": 500000
+    "min": 50000
   },
   {
     "img": "./oracle.png",
-    "cost": "1m-2,999,999",
+    "cost": "250k-499,999",
     "alt": "Oracle",
-    "min": 1000000
+    "min": 250000
   },
   {
     "img": "./commander.png",
-    "cost": ">3M",
+    "cost": ">500k",
     "alt": "Commander",
-    "min": 3000000
+    "min": 500000
   }
 ]
