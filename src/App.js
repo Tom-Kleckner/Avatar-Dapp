@@ -16,7 +16,7 @@ function App() {
         image.src = e.target.result;
         image.onload = () => {
           if (image.width !== image.height) {
-            reject("not a 1 to 1 aspect ratio");
+            reject("Image is not square please resize it");
             console.log("rejected");
           } else {
             resolve(reader.result);
@@ -37,7 +37,6 @@ function App() {
           setImg(base64);
         })
         .catch((e) => {
-          console.log("alerting");
           alert(e);
         });
     }
