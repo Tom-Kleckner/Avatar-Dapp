@@ -6,6 +6,7 @@ import Contract from "web3-eth-contract";
 import Web3 from "web3";
 import covers from "./covers.json";
 import Overlay from "react-image-overlay";
+import background from "./Stars.png";
 
 function App() {
   const getBase64 = (file) => {
@@ -104,7 +105,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundImage: `url(${background})` }}>
       <header className="App-header">
         {typeof img !== "undefined" ? (
           <Overlay
