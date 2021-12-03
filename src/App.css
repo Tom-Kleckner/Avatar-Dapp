@@ -77,7 +77,7 @@ input[type="file"] {
   display: none;
 }
 .custom-file-upload {
-  background-color: black;
+  background-color: #202020;
   border-radius: 25px;
   margin-top: 5px;
   border: 1px solid black;

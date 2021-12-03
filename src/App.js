@@ -7,6 +7,7 @@ import Web3 from "web3";
 import covers from "./covers.json";
 import Overlay from "react-image-overlay";
 import background from "./Stars.png";
+import mergeImages from "merge-images";
 
 function App() {
   const getBase64 = (file) => {
@@ -16,12 +17,7 @@ function App() {
         let image = new Image();
         image.src = e.target.result;
         image.onload = () => {
-          if (image.width !== image.height) {
-            reject("Image is not square please resize it");
-            console.log("rejected");
-          } else {
-            resolve(reader.result);
-          }
+          resolve(reader.result);
         };
       };
       reader.onerror = (error) => reject(error);
@@ -33,7 +29,8 @@ function App() {
     const file = e.target.files[0];
     if (typeof file !== "undefined" && /\.(jpe?g|png|gif)$/i.test(file.name)) {
       getBase64(file)
-        .then((base64) => {
+        .then(async (base64) => {
+          base64 = await resizeImage(base64, 1080, 1080);
           localStorage["fileBase64"] = base64;
           setImg(base64);
         })
@@ -45,6 +42,7 @@ function App() {
 
   const [account, setAccount] = useState();
   let [img, setImg] = useState(localStorage["fileBase64"]);
+  let [final, setFinal] = useState(localStorage["final"]);
   let [coverIndex, setCoverIndex] = useState(localStorage["coverIndex"]);
   let [balance, setBalance] = useState();
   // let provider = Web3.givenProvider ? Web3.givenProvider : config.chainURL;
@@ -55,6 +53,21 @@ function App() {
     orbitABI,
     "0x20bf68C512D5c8125687069347878ce0e7f01748"
   );
+
+  const resizeImage = (base64Str) => {
+    return new Promise((resolve) => {
+      let img = new Image();
+      img.src = base64Str;
+      img.onload = () => {
+        let canvas = document.createElement("canvas");
+        canvas.width = 1080;
+        canvas.height = 1080;
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, 1080, 1080);
+        resolve(canvas.toDataURL());
+      };
+    });
+  };
 
   const connectWeb3 = async () => {
     if (window.ethereum) {
@@ -94,6 +107,15 @@ function App() {
     }
   }, [account]);
 
+  useEffect(() => {
+    if (img && coverIndex) {
+      mergeImages([
+        img,
+        covers[coverIndex] ? covers[coverIndex].img : logo,
+      ]).then((b64) => setFinal(b64));
+    }
+  });
+
   const getCoverClass = (index) => {
     if (index === coverIndex) {
       return "Selected-img";
@@ -107,18 +129,7 @@ function App() {
   return (
     <div className="App" style={{ backgroundImage: `url(${background})` }}>
       <header className="App-header">
-        {typeof img !== "undefined" ? (
-          <Overlay
-            url={img} // required
-            overlayUrl={covers[coverIndex] ? covers[coverIndex].img : logo} // required
-            position={covers[coverIndex] ? "center" : "bottomRight"}
-            overlayWidth={covers[coverIndex] ? 250 : 10}
-            overlayHeight={covers[coverIndex] ? 250 : 10}
-            watermark={false}
-          />
-        ) : (
-          <img src={logo} className="App-logo" />
-        )}
+        <img src={final || img || logo} className="App-logo" />
         <label className="custom-file-upload">
           <input
             type="file"
