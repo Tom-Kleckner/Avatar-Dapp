@@ -108,13 +108,15 @@ function App() {
   }, [account]);
 
   useEffect(() => {
-    if (img && coverIndex) {
+    if (img && coverIndex >= 0) {
       mergeImages([
         img,
         covers[coverIndex] ? covers[coverIndex].img : logo,
-      ]).then((b64) => setFinal(b64));
+      ]).then((b64) => {
+        setFinal(b64);
+      });
     }
-  });
+  }, [img, coverIndex]);
 
   const getCoverClass = (index) => {
     if (index === coverIndex) {
