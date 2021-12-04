@@ -142,7 +142,7 @@ function App() {
           />
           Upload Avatar
         </label>
-        <label>{"Orbit Balance: " + balance}</label>
+        <label>{"$M31 Balance: " + balance}</label>
       </header>
       <div className="Covers-container">
         {covers.map((item, index) => (

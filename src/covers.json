@@ -1,43 +1,43 @@
 [
   {
     "img": "./guardian.png",
-    "cost": "1-4,999 Orbit",
+    "cost": "1-4,999 $M31",
     "alt": "Guardian",
     "min": 1
   },
   {
     "img": "./spy.png",
-    "cost": "5k-9,999 Orbit",
+    "cost": "5k-9,999 $M31",
     "alt": "Spy",
     "min": 5000
   },
   {
     "img": "./captain.png",
-    "cost": "10k-24,999 Orbit",
+    "cost": "10k-24,999 $M31",
     "alt": "Captain",
     "min": 10000
   },
   {
     "img": "./legend.png",
-    "cost": "25k-49,999 Orbit",
+    "cost": "25k-49,999 $M31",
     "alt": "Legend",
     "min": 25000
   },
   {
     "img": "./admiral.png",
-    "cost": "50k-249,999 Orbit",
+    "cost": "50k-249,999 $M31",
     "alt": "Admiral",
     "min": 50000
   },
   {
     "img": "./oracle.png",
-    "cost": "250k-499,999 Orbit",
+    "cost": "250k-499,999 $M31",
     "alt": "Oracle",
     "min": 250000
   },
   {
     "img": "./commander.png",
-    "cost": ">500k Orbit",
+    "cost": ">500k $M31",
     "alt": "Commander",
     "min": 500000
   }
